@@ -1,8 +1,8 @@
 # SR-FLIPFLOP-USING-CASE
 
 **AIM:**
+To implement SR flipflop using verilog and validating their functionality using their functional tables.
 
-To implement  SR flipflop using verilog and validating their functionality using their functional tables
 
 **SOFTWARE REQUIRED:**
 
@@ -37,12 +37,40 @@ The maximum possible groupings of adjacent ones are already shown in the figure.
 /* write all the steps invloved */
 
 **PROGRAM**
-
-/* Program for flipflops and verify its truth table in quartus using Verilog programming. Developed by: RegisterNumber:
+module sr_flipflop (
+    input clk,    // Clock signal
+    input reset,  // Active-high reset signal
+    input s,      // Set input
+    input r,      // Reset input
+    output reg q, // Output
+    output reg q_bar // Complement of output
+);
+    always @(posedge clk or posedge reset) begin
+        if (reset) begin
+            q <= 1'b0;      // Reset the flip-flop
+            q_bar <= 1'b1;  // Complement output
+        end
+        else begin
+            case ({s, r})
+                2'b00: ;             // No change
+                2'b01: begin         // Reset
+                    q <= 1'b0;
+                    q_bar <= 1'b1;
+                end
+                2'b10: begin         // Set
+                    q <= 1'b1;
+                    q_bar <= 1'b0;
+                end
+                2'b11: begin         // I
+/* Program for flipflops and verify its truth table in quartus using Verilog programming. Developed by: KEERTHANA R RegisterNumber:24900170
 */
 
 **RTL LOGIC FOR FLIPFLOPS**
+![Screenshot (205)](https://github.com/user-attachments/assets/f0ad5837-dbe1-4a6d-9c47-1d3d3271e04e)
 
 **TIMING DIGRAMS FOR FLIP FLOPS**
+![WhatsApp Image 2024-12-19 at 18 47 47_a828780c](https://github.com/user-attachments/assets/5c54e0c9-c1ab-4806-9965-adfab7c8c25f)
+
 
 **RESULTS**
+Thus, To implement SR flipflop using verilog and validating their functionality using their functional tables is done.
